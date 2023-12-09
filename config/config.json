@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "dDCFBdd44A42GdBG6-GecfC1H-1fEGCa",
+    "password": "null",
     "database": "railway",
     "host": "roundhouse.proxy.rlwy.net",
     "dialect": "mysql",
