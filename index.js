@@ -2,6 +2,20 @@ const express = require("express");
 const db = require("./models");
 const { UserRouter } = require("./Routes/User.Routes");
 const { PollsRouter } = require("./Routes/Polls.Routes");
+
+const Sequelize = require("sequelize");
+
+const seq = new Sequelize(
+	process.env.DB_NAME,
+	process.env.DB_USERNAME,
+	process.env.DB_PASS,
+	{
+		host: process.env.DB_HOST,
+		dialect: "mysql",
+		port: process.env.DB_PORT,
+	}
+);
+
 const {
 	Polls,
 	Questions,
@@ -57,7 +71,7 @@ app.use("/api/users", UserRouter);
 app.use("/api/polls", PollsRouter);
 
 // <---------App Routes Ends----------->
-db.sequelize.sync().then(() => {
+seq.sync().then(() => {
 	app.listen(port, () => {
 		console.log(`Listening @ ${port}`);
 	});
